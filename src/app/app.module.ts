@@ -7,11 +7,11 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomeModule } from '../pages/home/home.module';
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +22,6 @@ import { StorageService } from '../services/storage.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HomeModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -38,7 +37,8 @@ import { StorageService } from '../services/storage.service';
     CategoriaService,
     ErrorInterceptorProvider,
     StorageService,
-    AuthService
+    AuthService,
+
   ]
 })
 export class AppModule {}
