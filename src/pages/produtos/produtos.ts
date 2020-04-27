@@ -33,4 +33,8 @@ export class ProdutosPage {
     error => {}
     )
   }
+
+  showProdutcDetail(){
+    this.navCtrl.push('ProdutoDetailPage')
+  }
 }
