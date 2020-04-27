@@ -1,3 +1,4 @@
+import { CartService } from './../services/domain/cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -43,7 +44,8 @@ import { ProdutoService } from './../services/domain/produto.service';
     StorageService,
     AuthService,
     ClienteService,
-    ProdutoService
+    ProdutoService,
+    CartService
 
   ]
 })

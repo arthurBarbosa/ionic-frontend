@@ -1,3 +1,5 @@
+import { CartService } from './../../services/domain/cart.service';
+import { ProdutoService } from './../../services/domain/produto.service';
 import { ProdutoDTO } from './../../models/produto.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -20,16 +22,22 @@ export class ProdutoDetailPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public productService: ProdutoService,
+    public cartService: CartService) {
   }
 
   ionViewDidLoad() {
-    this.item = {
-      id: "1",
-      nome: 'Mouse',
-      preco: 80.59
+    let product_id = this.navParams.get('product_id');
+    this.productService.findById(product_id)
+    .subscribe(response => {
+      this.item = response;
+    })
+  }
 
-    }
+  addToCart(produto: ProdutoDTO){
+    this.cartService.addProduto(produto);
+    this.navCtrl.setRoot('CartPage');
   }
 
 }

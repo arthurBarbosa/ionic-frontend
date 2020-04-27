@@ -34,7 +34,7 @@ export class ProdutosPage {
     )
   }
 
-  showProdutcDetail(){
-    this.navCtrl.push('ProdutoDetailPage')
+  showProdutcDetail(product_id: string){
+    this.navCtrl.push('ProdutoDetailPage', {product_id: product_id})
   }
 }
