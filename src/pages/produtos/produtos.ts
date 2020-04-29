@@ -17,7 +17,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from "ionic-an
 })
 export class ProdutosPage {
 
-  items: ProdutoDTO[];
+  items: ProdutoDTO[]=[];
+  page: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -26,12 +27,18 @@ export class ProdutosPage {
     public loadingController: LoadingController) {}
 
   ionViewDidLoad() {
+    this.loadData();
+  }
+
+  loadData(){
     let categoria_id = this.navParams.get('categoria_id')
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id)
+    this.produtoService.findByCategoria(categoria_id, this.page, 10)
     .subscribe(response => {
-      this.items = response['content'];
+      this.items = this.items.concat(response['content']);
       loader.dismiss();
+      console.log(this.page)
+      console.log(this.items)
     },
     error => {}
     )
@@ -47,5 +54,24 @@ export class ProdutosPage {
     })
     loader.present();
     return loader;
+  }
+
+
+  doRefresh(refresher){
+    this.page = 0;
+    this.items = [];
+    this.loadData();
+    setTimeout(() => {
+      refresher.complete();
+    }, 1000)
+  }
+
+  doInfinite(infiniteScroll){
+    this.page++
+    this.loadData();
+    setTimeout(() => {
+      infiniteScroll.complete();
+    }, 1000)
+
   }
 }
