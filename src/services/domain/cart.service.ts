@@ -2,7 +2,6 @@ import { ProdutoDTO } from "./../../models/produto.dto";
 import { Cart } from "./../../models/cart";
 import { StorageService } from "./../storage.service";
 import { Injectable } from "@angular/core";
-import { p } from '@angular/core/src/render3';
 
 @Injectable()
 export class CartService {

@@ -1,4 +1,3 @@
-import { StorageService } from './storage.service';
 import { Cart } from './../models/cart';
 import { Injectable } from "@angular/core";
 import { LocalUser } from "../models/local-user";
